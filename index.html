@@ -1,9 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CEHA League — Home</title>
   <meta name="description" content="Official site of the CEHA Basketball League">
   <meta property="og:title" content="CEHA League — Home">
@@ -12,63 +11,90 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
 </head>
-<body>
+<body class="font-inter text-gray-900 bg-gray-50">
 
-<header class="header">
-  <div class="container row">
-    <a class="brand" href="index.html">🏀 CEHA Basketball League</a>
-    <nav id="nav" class="nav">
-      <a href="index.html">Home</a>
-      <a href="teams.html">Teams</a>
-      <a href="schedule.html">Schedule</a>
-      <a href="standings.html">Standings</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <button id="menuBtn" class="menu" aria-label="Toggle menu">☰</button>
-  </div>
-</header>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <a href="index.html" class="text-xl font-extrabold text-red-600 hover:text-yellow-500">🏀 CEHA Basketball League</a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-yellow-500">Home</a>
+        <a href="teams.html" class="hover:text-yellow-500">Teams</a>
+        <a href="schedule.html" class="hover:text-yellow-500">Schedule</a>
+        <a href="standings.html" class="hover:text-yellow-500">Standings</a>
+        <a href="contact.html" class="hover:text-yellow-500">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-2xl focus:outline-none" aria-label="Toggle menu">☰</button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-gray-100 px-6 py-4 space-y-3">
+      <a href="index.html" class="block hover:text-yellow-500">Home</a>
+      <a href="teams.html" class="block hover:text-yellow-500">Teams</a>
+      <a href="schedule.html" class="block hover:text-yellow-500">Schedule</a>
+      <a href="standings.html" class="block hover:text-yellow-500">Standings</a>
+      <a href="contact.html" class="block hover:text-yellow-500">Contact</a>
+    </div>
+  </header>
 
-<main>
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="container hero-content">
-      <h1>CEHA Basketball League</h1>
-      <p>Schedules, standings, and teams — all in one place.</p>
-      <div class="cta">
-        <a class="btn" href="schedule.html">View Schedule</a>
-        <a class="btn ghost" href="standings.html">Standings</a>
+  <!-- Hero Section -->
+  <main class="pt-24">
+    <section class="relative bg-cover bg-center h-[80vh]" style="background-image: url('images/court.jpg');">
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-4xl md:text-6xl font-extrabold mb-4">CEHA Basketball League</h1>
+          <p class="text-lg md:text-2xl mb-6">Schedules, standings, and teams — all in one place.</p>
+          <div class="flex justify-center gap-4">
+            <a href="schedule.html" class="bg-yellow-500 text-white px-6 py-3 rounded hover:bg-yellow-600 transition">View Schedule</a>
+            <a href="standings.html" class="border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-gray-900 transition">Standings</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="container cards">
-    <div class="card">
-      <h2>Latest News</h2>
-      <p>Season tips off on <strong>October 1, 2025</strong>. Check the schedule for game times and venues.</p>
-    </div>
-    <div class="card">
-      <h2>Featured Match</h2>
-      <p><strong>VA</strong> vs <strong>SPMC Boys</strong> — October 5, 2025 • 7:00 PM • Community Gym</p>
-      <a class="link" href="schedule.html">See all games →</a>
-    </div>
-    <div class="card">
-      <h2>Teams</h2>
-      <ul class="team-list">
-        <li><img src="images/va.png" alt="VA logo"><span>VA</span></li><li><img src="images/spmc-boys.png" alt="SPMC Boys logo"><span>SPMC Boys</span></li><li><img src="images/tailoring.png" alt="Tailoring logo"><span>Tailoring</span></li><li><img src="images/ceha1.png" alt="Ceha1 logo"><span>Ceha1</span></li><li><img src="images/ceha2.png" alt="Ceha2 logo"><span>Ceha2</span></li><li><img src="images/ceha3.png" alt="Ceha3 logo"><span>Ceha3</span></li>
-      </ul>
-      <a class="link" href="teams.html">Meet all teams →</a>
-    </div>
-  </section>
-</main>
+    <!-- Cards Section -->
+    <section class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-2">Latest News</h2>
+        <p>Season tips off on <strong>October 1, 2025</strong>. Check the schedule for game times and venues.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-2">Featured Match</h2>
+        <p><strong>VA</strong> vs <strong>SPMC Boys</strong> — October 5, 2025 • 7:00 PM • Community Gym</p>
+        <a href="schedule.html" class="text-yellow-500 hover:underline mt-2 inline-block">See all games →</a>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-2">Teams</h2>
+        <ul class="grid grid-cols-3 gap-2 items-center">
+          <li class="flex flex-col items-center"><img src="images/va.png" alt="VA logo"><span>VA</span></li>
+          <li class="flex flex-col items-center"><img src="images/spmc-boys.png" alt="SPMC Boys logo"><span>SPMC Boys</span></li>
+          <li class="flex flex-col items-center"><img src="images/tailoring.png" alt="Tailoring logo"><span>Tailoring</span></li>
+          <li class="flex flex-col items-center"><img src="images/ceha1.png" alt="Ceha1 logo"><span>Ceha1</span></li>
+          <li class="flex flex-col items-center"><img src="images/ceha2.png" alt="Ceha2 logo"><span>Ceha2</span></li>
+          <li class="flex flex-col items-center"><img src="images/ceha3.png" alt="Ceha3 logo"><span>Ceha3</span></li>
+        </ul>
+        <a href="teams.html" class="text-yellow-500 hover:underline mt-2 inline-block">Meet all teams →</a>
+      </div>
+    </section>
+  </main>
 
-<footer class="footer">
-  <div class="container">
-    <p>© <span id="year"></span> CEHA League • Built with ❤️</p>
-  </div>
-</footer>
-<script src="script.js"></script>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6">
+    <div class="container mx-auto text-center">
+      <p>© <span id="year"></span> CEHA League • Built with ❤️</p>
+    </div>
+  </footer>
 
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
