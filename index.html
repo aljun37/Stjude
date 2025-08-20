@@ -1,55 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CEHA League — Home</title>
-  <meta name="description" content="Official site of the CEHA Basketball League">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body { font-family: 'Inter', sans-serif; margin:0; padding:0; background:#f5f5f5; color:#222; }
-    a { text-decoration:none; }
-    header { position: fixed; width: 100%; background:#fff; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-    .container { width:90%; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:1rem 0;}
-    .brand { font-weight:800; font-size:1.25rem; color:#e63946;}
-    nav a { margin-left:1rem; color:#222; font-weight:600; }
-    nav a:hover { color:#f1faee; }
-    #menuBtn { font-size:1.5rem; background:none; border:none; cursor:pointer; }
-    #mobileMenu { display:none; flex-direction:column; padding:1rem 0; background:#e63946; }
-    #mobileMenu a { color:#fff; padding:0.5rem 0; }
-    .hero { height:80vh; background:url('images/court.jpg') center/cover no-repeat; position:relative; display:flex; align-items:center; justify-content:center; text-align:center; }
-    .hero .overlay { position:absolute; inset:0; background:rgba(0,0,0,0.6); }
-    .hero-content { position:relative; color:#fff; padding:0 1rem; }
-    .hero-content h1 { font-size:2rem; font-weight:800; margin-bottom:0.5rem; }
-    .hero-content p { font-size:1rem; margin-bottom:1rem; }
-    .cta a { display:inline-block; margin:0.25rem; padding:0.75rem 1.5rem; border-radius:8px; font-weight:600; }
-    .btn-primary { background:#f1faee; color:#e63946; }
-    .btn-primary:hover { background:#fff; }
-    .btn-secondary { background:transparent; border:2px solid #fff; color:#fff; }
-    .btn-secondary:hover { background:#fff; color:#e63946; }
-    .cards { display:flex; flex-direction:column; gap:1rem; padding:2rem 0; }
-    .card { background:#fff; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
-    .team-list { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-top:0.5rem;}
-    .team-list li { display:flex; flex-direction:column; align-items:center; width:70px; }
-    footer { background:#222; color:#fff; text-align:center; padding:1rem 0; margin-top:2rem;}
-    @media(min-width:768px){
-      #mobileMenu{display:none;}
-      nav{display:flex;}
-      .cards{flex-direction:row;}
-      .card{flex:1;}
-      .hero-content h1{font-size:3rem;}
-      .hero-content p{font-size:1.25rem;}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEHA League — Home</title>
+<meta name="description" content="Official site of the CEHA Basketball League">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  /* Reset & base */
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#f5f5f5;color:#222;}
+  a{text-decoration:none;color:inherit;}
+  .container{width:90%;max-width:1200px;margin:0 auto;}
+  button{cursor:pointer;background:none;border:none;}
+
+  /* Header */
+  header{position:fixed;width:100%;background:#fff;z-index:1000;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  .header-inner{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;}
+  .brand{font-weight:800;font-size:1.25rem;color:#e63946;}
+  nav a{margin-left:1rem;font-weight:600;}
+  #menuBtn{font-size:1.5rem;}
+  #mobileMenu{display:none;flex-direction:column;padding:1rem 0;background:#e63946;}
+  #mobileMenu a{color:#fff;padding:0.5rem 0;}
+
+  /* Hero */
+  .hero{height:80vh;background:url('images/court.jpg') center/cover no-repeat;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.3));z-index:0;}
+  .hero-content{position:relative;color:#fff;z-index:1;animation:fadeIn 1.2s ease forwards;}
+  .hero-content h1{font-size:2rem;font-weight:800;margin-bottom:0.5rem;}
+  .hero-content p{font-size:1rem;margin-bottom:1rem;}
+  .cta a{display:inline-block;margin:0.25rem;padding:0.75rem 1.5rem;border-radius:8px;font-weight:600;transition:all 0.3s;}
+  .btn-primary{background:#f1faee;color:#e63946;}
+  .btn-primary:hover{background:#fff;color:#e63946;transform:translateY(-2px);}
+  .btn-secondary{background:transparent;border:2px solid #fff;color:#fff;}
+  .btn-secondary:hover{background:#fff;color:#e63946;transform:translateY(-2px);}
+
+  /* Animated fade in */
+  @keyframes fadeIn{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+
+  /* Cards Carousel */
+  .cards{display:flex;overflow-x:auto;gap:1rem;padding:2rem 0;scroll-snap-type:x mandatory;}
+  .card{flex:0 0 80%;background:#fff;padding:1rem;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);scroll-snap-align:start;transition:transform 0.3s;}
+  .card:hover{transform:translateY(-5px);}
+  .card h2{margin-bottom:0.5rem;}
+  .card a{color:#e63946;font-weight:600;}
+
+  /* Teams */
+  .team-list{display:flex;overflow-x:auto;gap:1rem;justify-content:flex-start;padding:1rem 0;}
+  .team-list li{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;width:70px;transition:transform 0.3s;}
+  .team-list li:hover{transform:scale(1.1);}
+  .team-list img{width:50px;height:50px;margin-bottom:0.25rem;}
+
+  /* Footer */
+  footer{background:#222;color:#fff;text-align:center;padding:1rem 0;margin-top:2rem;}
+
+  /* Responsive Desktop */
+  @media(min-width:768px){
+    .hero-content h1{font-size:3rem;}
+    .hero-content p{font-size:1.25rem;}
+    .cards{flex-wrap:wrap;overflow-x:visible;}
+    .card{flex:1;min-width:30%;}
+    #mobileMenu{display:none;}
+    nav{display:flex;}
+  }
+</style>
 </head>
 <body>
 
 <header>
-  <div class="container">
+  <div class="container header-inner">
     <a class="brand" href="index.html">🏀 CEHA League</a>
-    <nav id="nav" class="nav">
+    <nav id="nav">
       <a href="index.html">Home</a>
       <a href="teams.html">Teams</a>
       <a href="schedule.html">Schedule</a>
@@ -69,7 +91,6 @@
 
 <main class="pt-24">
   <section class="hero">
-    <div class="overlay"></div>
     <div class="hero-content">
       <h1>CEHA Basketball League</h1>
       <p>Schedules, standings, and teams — all in one place.</p>
@@ -88,7 +109,7 @@
     <div class="card">
       <h2>Featured Match</h2>
       <p><strong>VA</strong> vs <strong>SPMC Boys</strong> — October 5, 2025 • 7:00 PM • Community Gym</p>
-      <a href="schedule.html" class="btn-primary">See all games →</a>
+      <a href="schedule.html">See all games →</a>
     </div>
     <div class="card">
       <h2>Teams</h2>
@@ -100,7 +121,7 @@
         <li><img src="images/ceha2.png" alt="Ceha2 logo"><span>Ceha2</span></li>
         <li><img src="images/ceha3.png" alt="Ceha3 logo"><span>Ceha3</span></li>
       </ul>
-      <a href="teams.html" class="btn-primary">Meet all teams →</a>
+      <a href="teams.html">Meet all teams →</a>
     </div>
   </section>
 </main>
@@ -120,6 +141,5 @@
     mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
   });
 </script>
-
 </body>
 </html>
