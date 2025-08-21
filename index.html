@@ -5,86 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CEHA League — Home</title>
 <meta name="description" content="Official site of the CEHA Basketball League">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/aljun37/stjude/images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   /* Reset & base */
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Inter',sans-serif; background: linear-gradient(180deg, #f5f5f5 0%, #fff 100%); color:#222; }
-  a { text-decoration:none; color:inherit; }
-  .container { width:90%; max-width:1200px; margin:0 auto; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#f5f5f5;color:#222;line-height:1.5;}
+  a{text-decoration:none;color:inherit;}
+  .container{width:90%;max-width:1200px;margin:0 auto;}
+  button{cursor:pointer;background:none;border:none;}
 
   /* Header */
-  header {
-    position:fixed; top:0; left:0; width:100%; z-index:1000; 
-    background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.1);
-  }
-  .header-inner { display:flex; justify-content:space-between; align-items:center; padding:1rem 0; }
-  .brand { font-weight:800; font-size:1.25rem; color:#e63946; }
-  nav a { margin-left:1rem; font-weight:600; }
-  #menuBtn { font-size:1.5rem; background:none; border:none; cursor:pointer; }
-  #mobileMenu { display:none; flex-direction:column; padding:1rem 0; background:#e63946; }
-  #mobileMenu a { color:#fff; padding:0.5rem 0; }
+  header{position:fixed;width:100%;background:#fff;z-index:1000;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  .header-inner{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;}
+  .brand{font-weight:800;font-size:1.25rem;color:#e63946;}
+  nav a{margin-left:1rem;font-weight:600;transition:color 0.3s;}
+  nav a:hover{color:#f1faee;}
+  #menuBtn{font-size:1.5rem;}
+  #mobileMenu{display:none;flex-direction:column;padding:1rem 0;background:#e63946;}
+  #mobileMenu a{color:#fff;padding:0.5rem 0;transition:color 0.3s;}
+  #mobileMenu a:hover{color:#f1faee;}
 
   /* Hero */
-  .hero { height:100vh; background:url('images/court.jpg') center/cover no-repeat; position:relative; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
-  .hero::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.3)); z-index:0; }
-  .hero-content { position:relative; color:#fff; z-index:1; animation:fadeIn 1s ease forwards; padding:0 1rem; }
-  .hero-content h1 { font-size:2rem; font-weight:800; margin-bottom:0.5rem; }
-  .hero-content p { font-size:1rem; margin-bottom:1rem; }
+  .hero{height:70vh;background:url('https://raw.githubusercontent.com/aljun37/stjude/images/court.jpg') center/cover no-repeat;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.3));z-index:0;}
+  .hero-content{position:relative;color:#fff;z-index:1;animation:fadeInUp 1s ease forwards;}
+  .hero-content h1{font-size:2rem;font-weight:800;margin-bottom:0.5rem;}
+  .hero-content p{font-size:1rem;margin-bottom:1rem;}
+  .cta a{display:inline-block;margin:0.25rem;padding:0.75rem 1.5rem;border-radius:8px;font-weight:600;transition:all 0.3s;}
+  .btn-primary{background:#f1faee;color:#e63946;}
+  .btn-primary:hover{background:#fff;color:#e63946;transform:translateY(-2px);}
+  .btn-secondary{background:transparent;border:2px solid #fff;color:#fff;}
+  .btn-secondary:hover{background:#fff;color:#e63946;transform:translateY(-2px);}
 
-  .cta a {
-    display:block;
-    width:100%;
-    text-align:center;
-    margin-bottom:0.5rem;
-    padding:1rem 0;
-    border-radius:8px;
-    font-weight:600;
-    transition:all 0.3s ease;
-  }
-  .btn-primary { background:#f1faee; color:#e63946; }
-  .btn-primary:hover { background:#fff; color:#e63946; transform:translateY(-2px); }
-  .btn-secondary { background:#fff; color:#e63946; }
-  .btn-secondary:hover { background:#f1faee; color:#e63946; transform:translateY(-2px); }
+  /* Cards Carousel */
+  .cards{display:flex;overflow-x:auto;gap:1rem;padding:2rem 0;scroll-snap-type:x mandatory;}
+  .card{flex:0 0 80%;background:#fff;padding:1rem;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);scroll-snap-align:start;transition:transform 0.3s;}
+  .card:hover{transform:translateY(-5px);}
+  .card h2{margin-bottom:0.5rem;}
+  .card a{color:#e63946;font-weight:600;}
 
-  /* Cards */
-  .cards { display:flex; flex-direction:column; gap:1rem; margin:1rem 0; }
-  .card { background:#fff; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); animation:fadeIn 0.8s ease forwards; }
-  .card h2 { margin-bottom:0.5rem; }
-  .card a { color:#e63946; font-weight:600; display:inline-block; margin-top:0.5rem; }
-
-  /* Teams carousel */
-  .team-list { display:flex; overflow-x:auto; gap:1rem; padding:1rem 0; }
-  .team-list li { flex:0 0 auto; display:flex; flex-direction:column; align-items:center; width:80px; transition:transform 0.3s; }
-  .team-list li:hover { transform:scale(1.1); }
-  .team-list img { width:60px; height:60px; margin-bottom:0.25rem; }
-
-  /* Sticky Mobile CTA */
-  .mobile-cta {
-    position:fixed; bottom:0; left:0; width:100%; display:flex; justify-content:space-around; padding:0.5rem 0; background:#e63946; z-index:1000;
-  }
-  .mobile-cta a { flex:1; margin:0 0.5rem; text-align:center; padding:0.75rem 0; border-radius:8px; font-weight:600; transition:all 0.3s; }
-  .mobile-cta .btn-primary { background:#f1faee; color:#e63946; }
-  .mobile-cta .btn-secondary { background:#fff; color:#e63946; }
+  /* Teams */
+  .team-list{display:flex;overflow-x:auto;gap:1rem;justify-content:flex-start;padding:1rem 0;}
+  .team-list li{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;width:70px;transition:transform 0.3s;}
+  .team-list li:hover{transform:scale(1.1);}
+  .team-list img{width:50px;height:50px;margin-bottom:0.25rem;border-radius:50%;border:2px solid #e63946;}
 
   /* Footer */
-  footer { background:#222; color:#fff; text-align:center; padding:1rem 0; margin-top:2rem; }
+  footer{background:#222;color:#fff;text-align:center;padding:1rem 0;margin-top:2rem;font-size:0.9rem;}
 
   /* Animations */
-  @keyframes fadeIn { 0% {opacity:0; transform:translateY(20px);} 100% {opacity:1; transform:translateY(0);} }
+  @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
 
-  /* Responsive Desktop */
+  /* Responsive */
   @media(min-width:768px){
     .hero-content h1{font-size:3rem;}
     .hero-content p{font-size:1.25rem;}
-    .cards{flex-direction:row;}
-    .card{flex:1; min-width:30%;}
+    .cards{flex-wrap:wrap;overflow-x:visible;}
+    .card{flex:1;min-width:30%;}
     #mobileMenu{display:none;}
     nav{display:flex;}
-    .mobile-cta{display:none;}
-    .team-list li{width:70px;}
-    .team-list img{width:50px; height:50px;}
   }
 </style>
 </head>
@@ -138,23 +118,17 @@
     <div class="card">
       <h2>Teams</h2>
       <ul class="team-list">
-        <li><img src="images/va.png" alt="VA logo"><span>VA</span></li>
-        <li><img src="images/spmc-boys.png" alt="SPMC Boys logo"><span>SPMC Boys</span></li>
-        <li><img src="images/tailoring.png" alt="Tailoring logo"><span>Tailoring</span></li>
-        <li><img src="images/ceha1.png" alt="Ceha1 logo"><span>Ceha1</span></li>
-        <li><img src="images/ceha2.png" alt="Ceha2 logo"><span>Ceha2</span></li>
-        <li><img src="images/ceha3.png" alt="Ceha3 logo"><span>Ceha3</span></li>
+        <li><img src="https://raw.githubusercontent.com/aljun37/stjude/images/va.png" alt="VA logo"><span>VA</span></li>
+        <li><img src="https://raw.githubusercontent.com/aljun37/stjude/images/spmc-boys.png" alt="SPMC Boys logo"><span>SPMC Boys</span></li>
+        <li><img src="https://raw.githubusercontent.com/aljun37/stjude/images/tailoring.png" alt="Tailoring logo"><span>Tailoring</span></li>
+        <li><img src="https://raw.githubusercontent.com/aljun37/stjude/images/ceha1.png" alt="Ceha1 logo"><span>Ceha1</span></li>
+        <li><img src="https://raw.githubusercontent.com/aljun37/stjude/images/ceha2.png" alt="Ceha2 logo"><span>Ceha2</span></li>
+        <li><img src="https://raw.githubusercontent.com/aljun37/stjude/images/ceha3.png" alt="Ceha3 logo"><span>Ceha3</span></li>
       </ul>
       <a href="teams.html">Meet all teams →</a>
     </div>
   </section>
 </main>
-
-<!-- Sticky Mobile CTA -->
-<div class="mobile-cta">
-  <a href="schedule.html" class="btn-primary">Schedule</a>
-  <a href="standings.html" class="btn-secondary">Standings</a>
-</div>
 
 <footer>
   <p>© <span id="year"></span> CEHA League • Built with ❤️</p>
@@ -171,5 +145,6 @@
     mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
   });
 </script>
+
 </body>
 </html>
